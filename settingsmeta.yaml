@@ -1,0 +1,9 @@
+name: Mycroft Youtube
+skillMetadata:
+	sections:
+		- name: Preferences
+		  fields:
+			- type: number
+			  name: volume
+			  label: The volume to play youtube videos at. (not currently implemented)
+			  value: 20

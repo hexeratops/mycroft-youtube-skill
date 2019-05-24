@@ -1,0 +1,1 @@
+.*(youtube|search|for|about)(?! (search|for|about)) (?P<YoutubeSubject>.+)
