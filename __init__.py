@@ -10,7 +10,9 @@ import requests
 from bs4 import BeautifulSoup
 
 # Standard skill behaviour
-from mycroft.skills.core import MycroftSkill, IntentBuilder, intent_handler
+from adapt.intent import IntentBuilder
+from mycroft.skills.core import MycroftSkill, intent_handler
+#from mycroft.skills.core import MycroftSkill, IntentBuilder, intent_handler
 from mycroft.audio import wait_while_speaking
 
 __author__ = 'hexeratops'
