@@ -6,8 +6,7 @@ import signal
 import os
 
 # Used for calling the youtube search API
-import requests 
-from bs4 import BeautifulSoup
+from youtube_searcher import search_youtube
 
 # Standard skill behaviour
 from adapt.intent import IntentBuilder
@@ -34,15 +33,16 @@ class YoutubeSkill(MycroftSkill):
         Returns:
         The youtube video ID on success or None upon failure.
         """
-        response = requests.get("https://www.youtube.com/results", params={'search_query': text})
-        if response.status_code == 200:
-            soup = BeautifulSoup(response.content.decode('utf-8', 'ignore'), features='lxml')
-            for vid in soup.findAll(attrs={'class': 'yt-uix-tile-link'}):
-                if "googleads" not in vid['href'] and not vid['href'].startswith(
-                        u"/user") and not vid['href'].startswith(u"/channel"):
-                    id = vid['href'].split("v=")[1].split("&")[0]
-                    title = vid['title']
-                    return [id, title]
+        try:
+            results = search_youtube(text)
+            if 'videos' in results and len(results['videos']) > 0:
+                result = results['videos'][0]
+                id = result['url'].split('v=')[1].split('&')[0]
+                title = result['title']
+                return [id, title]
+        except:
+            pass
+
         return None
 
     @intent_handler(IntentBuilder("").require("YoutubeKeyword").require("YoutubeSubject"))

@@ -17,4 +17,4 @@ if [[ -f "$MYCROFT_CONF" ]] && grep -q '"platform":.*"mycroft_mark_1"' $MYCROFT_
 fi
 
 # Execute the script. TBD: make more parameters adjustable.
-exec /bin/bash -c "$VENV_CMD exec youtube-dl -o - "https://www.youtube.com/watch?v=$1" --quiet -f 'bestaudio[ext=m4a]' | mplayer - -vo xy -volume 20 -really-quiet > /dev/null 2>&1"
+exec /bin/bash -c "$VENV_CMD exec python3 -m youtube_dl -o - "https://www.youtube.com/watch?v=$1" --quiet -f 'bestaudio[ext=m4a]' | mplayer - -vo xy -volume 20 -really-quiet > /dev/null 2>&1"
