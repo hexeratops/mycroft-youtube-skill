@@ -10,10 +10,9 @@ incredibly dumb. It can only start/stop videos and not control the tracking.
 In the future, this skill may be expanded to be able to queue up songs or even handle
 playlists, but for now, it just trys to play the video you ask it to play.
 
-Special thanks to [Augusto Monteiro](https://github.com/augustnmonteiro) for providing the
-[starting point and inspiration](https://github.com/augustnmonteiro/mycroft-youtube) for this project.
-I make use is his youtube search result parser he built using BeautifulSoup in the
-YoutubeSkill::search function, but the rest of the code is entirely custom.
+Special thanks to [JarbasAI](https://github.com/augustnmonteiro) for providing the
+[search utility](https://github.com/HelloChatterbox/youtube_searcher) for this project.
+Were it not for them, the project would have likely been archived.
 
 # Requirements 
 * mpv player
