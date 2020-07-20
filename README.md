@@ -1,14 +1,3 @@
-# DEPRECATION NOTICE
-
-This service is only here for archival purposes. Youtube has modified their search
-page to require JavaScript rendering to view the results. While, in theory, I could
-introduce a headless browser to render the page, I don't want to do that. It's too
-heavy-fisted for my liking. 
-
-The rest of the code (particularly the bash script for playing a youtube video in MPV)
-should still function.
-
-
 # mycroft-youtube
 A skill to play youtube videos. It searches youtube for what you say to it, then
 it plays the first thing it finds in the results. 
