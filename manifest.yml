@@ -1,7 +1,6 @@
 dependencies:
   python:
-    - requests
-    - beautifulsoup4
-    - youtube-dl
+    - youtube_dl
+    - youtube_search
   system:
     all: mplayer2
