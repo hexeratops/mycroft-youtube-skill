@@ -2,8 +2,9 @@
 # This script goes to youtube and plays a video using youtube-dl and mplayer without saving an intermediate file
 # or needing to download the entire file first.
 # Argument 1 - The video id. (ie: youtube.com/watch?v=<param>)
+# Argument 2 - The volume percentage. (ie: 20)
 
-if [ "$#" -ne 1 ]; then
+if [ "$#" -ne 2 ]; then
     echo "Illegal number of parameters"
     exit
 fi
@@ -17,4 +18,4 @@ if [[ -f "$MYCROFT_CONF" ]] && grep -q '"platform":.*"mycroft_mark_1"' $MYCROFT_
 fi
 
 # Execute the script. TBD: make more parameters adjustable.
-exec /bin/bash -c "$VENV_CMD exec python3 -m youtube_dl -o - "https://www.youtube.com/watch?v=$1" --quiet -f 'bestaudio[ext=m4a]' | mplayer - -vo xy -volume 20 -really-quiet > /dev/null 2>&1"
+exec /bin/bash -c "$VENV_CMD exec python3 -m youtube_dl -o - "https://www.youtube.com/watch?v=$1" --quiet -f 'bestaudio[ext=m4a]' | mplayer - -vo xy -volume "$2" -really-quiet > /dev/null 2>&1"

@@ -11,7 +11,6 @@ from youtube_searcher import search_youtube
 # Standard skill behaviour
 from adapt.intent import IntentBuilder
 from mycroft.skills.core import MycroftSkill, intent_handler
-#from mycroft.skills.core import MycroftSkill, IntentBuilder, intent_handler
 from mycroft.audio import wait_while_speaking
 
 __author__ = 'hexeratops'
@@ -45,7 +44,29 @@ class YoutubeSkill(MycroftSkill):
 
         return None
 
-    @intent_handler(IntentBuilder("").require("YoutubeKeyword").require("YoutubeSubject"))
+    @intent_handler(IntentBuilder("YoutubeVolume").require("VolumeKeyword").require("NewVolume"))
+    def volume(self, message):
+        """Responds to volume change requests"""
+        self.stop()
+        
+        try:
+            vol = int(message.data.get('NewVolume'))
+            if vol < 0 or vol > 100:
+                raise ValueError("Volume not valid")
+        except:
+            self.speak_dialog("volume invalid")
+            return
+
+
+        self.settings['volume'] = vol
+
+        # Confirm by reading back the current setting
+        vol = self.settings.get('volume', 20)
+        self.speak_dialog('volume', {'vol': vol})
+
+
+
+    @intent_handler(IntentBuilder("YoutubeSearcher").require("YoutubeKeyword").require("YoutubeSubject"))
     def youtube(self, message):
         """Responds to the youtube keyword"""
         self.stop()
@@ -58,7 +79,7 @@ class YoutubeSkill(MycroftSkill):
             self.speak_dialog("no video found", {"query": subject})
         else:
             # Start the process, then display the title of the video
-            self.process = subprocess.Popen([self.ytp, vid[0]], preexec_fn=os.setsid)
+            self.process = subprocess.Popen([self.ytp, vid[0], str(self.settings.get('volume', 20))], preexec_fn=os.setsid)
             wait_while_speaking()
             self.enclosure.mouth_text(vid[1])
             self.process.wait()

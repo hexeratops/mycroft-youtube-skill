@@ -1,1 +1,2 @@
-.*(youtube|search|for|about)(?! (search|for|about)) (?P<YoutubeSubject>.+)
+^youtube ((search|for|about) )?((for|about|regarding) )?(?P<YoutubeSubject>.+)
+^search youtube ((for|about|regarding) )?(?P<YoutubeSubject>.+)
