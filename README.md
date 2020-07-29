@@ -10,6 +10,11 @@ incredibly dumb. It can only start/stop videos and not control the tracking.
 In the future, this skill may be expanded to be able to queue up songs or even handle
 playlists, but for now, it just trys to play the video you ask it to play.
 
+There is now volume control added to the project. This is mainly to act as a balance
+between the loudness of Mycroft's voice and the loudness of the audio it plays over
+youtube. It can be controlled by your voice (as per the examples) or set to a new
+default on home.mycroft.ai.
+
 Special thanks to [JarbasAI](https://github.com/augustnmonteiro) for providing the
 [search utility](https://github.com/HelloChatterbox/youtube_searcher) for this project.
 Were it not for them, the project would have likely been archived.
@@ -31,4 +36,6 @@ Were it not for them, the project would have likely been archived.
 # Using
 * Say `youtube John Denver`
 * Say `youtube Rocky Mountain High`
-* Say `youtube search for Im a believer by the Monkeys`
+* Say `youtube search for Im a believer by the Monkees`
+* Say `increase youtube volume to 40 percent`
+* Say `decrease youtube volume to 20 percent`
