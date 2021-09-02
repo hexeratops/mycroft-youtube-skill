@@ -1,0 +1,1 @@
+^((erhöhe|verringere|setze|ändere|erhöhe die|verringere die|setze die|ändere die) )?youtube lautstärke ((auf|zu|) )?(?P<NewVolume>\d+)( Prozent)?

@@ -1,0 +1,2 @@
+^youtube ((suche|nach|über) )?((nach|über|zu) )?(?P<YoutubeSubject>.+)
+^suche youtube ((nach|über|zu) )?(?P<YoutubeSubject>.+)
